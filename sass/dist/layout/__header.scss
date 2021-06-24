@@ -1,0 +1,299 @@
+
+main{
+    background-color: black;
+    height: 534px;
+    width: 100%;
+    @include max(1080px){
+        height: auto;
+    }
+}
+
+.opacity{
+    position: absolute;
+    left: 0;
+    z-index: 17;
+    height: 100vh;
+    width: 100%;
+    background: #000;
+    opacity: 0.8;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.header{
+    z-index: 20;
+    position: absolute;
+    left: 65px;
+    &__nav{
+        @extend %flex;
+        padding-top: rem(63);
+        @include max(721px){
+            padding-top: rem(49);
+        }
+        .logo{
+            a:focus{
+                outline: 2px dotted $White;
+                outline-offset: 0.35rem;
+            }
+            a:not(:focus){
+                outline: none;
+            }
+            @include max(721px){
+                position: absolute;
+                left: 93px;    
+            }
+            @include max(350px){
+                position: absolute;
+                left: 70px;    
+            }
+        }
+        .none{
+            display: none;
+        }
+    }
+
+    &__links{
+        @include max(720px){
+            display: none;
+        }
+        ul{
+            margin-left: rem(55);
+            @extend %flex;
+        }
+        li{
+            font-size: rem(12);
+            text-transform: lowercase;
+            position: relative;
+            &::after{
+                content: "";
+                display: block;
+                height: 1.5px;
+                width: 100%;
+                background: $White;
+                position: absolute;
+                top: 18px;
+                transform: scaleX(0);
+                transition: 0.3s ease-in-out;
+            }
+            &:hover::after{
+                transform: scaleX(1);
+            }
+            a{
+                color: $White;
+            }
+            &:not(:last-child){
+                margin-right: rem(31);
+            }
+        }
+    }
+
+    &__mobile-menu{
+        @include min(721px){
+            display: none;
+        }
+        .hamburger{
+            z-index: 200;
+            position: relative;
+            right: 40px;
+            cursor: pointer;
+        }
+        .hamburger::before{
+            content: "";
+            display: block;
+            height: 1.75px;
+            width: 19px;
+            box-shadow: 0px 6px 0px $White;
+            background: $White;
+            transition: .5s ease-in-out;
+        }
+        .hamburger::after{
+            content: "";
+            display: block;
+            height: 1.75px;
+            width: 19px;
+            background: $White;
+            margin-top: 10px;
+            transition: .5s ease-in-out;
+        }
+    }   
+}
+
+.mobile-links{
+    z-index: 18;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 110px;
+    padding: 47px 0px;
+    padding-left: 110px;
+    transform: translateY(-120px);
+    transition: 0.6s;
+    opacity: 0;
+    @include max(365px){
+        padding-left: 80px;
+    }
+    @include max(319px){
+        padding-left: 65px;
+    }
+    .links{
+        @extend %flex;
+
+        a{
+            text-transform: lowercase;
+            font-size: 12px;
+            text-transform: lowercase;
+            color: $Black;
+            margin-top: 3px;
+            &:focus{
+                outline: 2px dotted black;
+                outline-offset: 0.25rem;
+            }
+            &:not(:first-child){
+                margin-left: 26px;
+                @include max(365px){
+                    margin-left: 19px;
+                }
+            }
+        }
+    }
+    @include min(721px){
+        display: none;
+    }
+}
+
+.open{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.none{
+    transition: 0.6s;
+    display: none;
+}
+
+.no-scroll{
+    overflow: hidden;
+}
+
+.event{
+    pointer-events: none;
+}
+
+
+
+
+.change{
+    .hamburger{
+        outline: none;
+    }
+    .hamburger::before{
+        animation: anim 0.5s ease-in-out forwards;
+        background-color: $DarkGray;
+    }
+    .hamburger::after{
+        background: $DarkGray;
+        animation: anime 0.5s ease-in-out forwards;
+    }
+}
+
+.open{
+    opacity: 1;
+}
+
+.removeChange{
+    .hamburger{
+        outline: none;
+    }
+    .hamburger::before{
+        animation: animRemove 0.5s ease-in-out forwards;
+    }
+    .hamburger::after{
+        animation: animeRemove 0.5s ease-in-out forwards;
+    }
+}
+
+
+
+
+
+
+
+.intro{
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #161616;
+    opacity: 0.9;
+    transition: 1s;
+}
+.intro-name{
+    position: absolute;
+    top: 45%;
+    left: 53%;
+    transform: translate(-50%,-50%);
+    color: #ffffff;
+    @include max(650px){
+        left: 50%;
+        text-align: center;
+    }
+}
+
+.name{
+    position: relative;
+    display: block;
+    bottom: -25px;
+    opacity: 0;
+    margin: 25px 0px;
+    font-size: 30px;
+    text-transform: uppercase;
+    @include max(970px){
+        font-size: 20px;
+    }
+    @include max(650px){
+        font-size: 15px;
+    }
+    @include max(440px){
+        font-size: 12px;
+    }
+    @include max(360px){
+        font-size: 10px;
+    }
+}
+
+.fm{
+    color: #b8fb3c;
+}
+
+.rm{
+    color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 60px #0fa,
+      0 0 70px #0fa,
+      0 0 80px #0fa,
+      0 0 100px #0fa;
+}
+
+.nh{
+    color: #b8fb3c;
+}
+
+.name.active{
+    bottom: 0;
+    opacity: 1;
+    transition: ease-in-out 0.5s;
+}
+
+.name.fade{
+    bottom: 250px;
+    opacity: 0;
+    transition: ease-in 0.5s;
+}

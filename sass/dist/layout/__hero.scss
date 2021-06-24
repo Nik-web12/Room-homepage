@@ -1,0 +1,194 @@
+.hero{
+    overflow: hidden;
+    &__content{
+        display: grid;
+        grid-template-columns: auto auto;
+        @include max(1080px){
+            grid-template-columns: auto;
+        }
+    }
+    &__images{
+        position: relative;
+    }
+    &__img{
+        height: 534px;
+        @include max(480px){
+            height: 360px;
+        }
+        .desktop{
+            height: 534px;
+            width: 100%;
+            object-fit: cover;
+            @include max(1300px){
+                object-position: -20px 0px;
+            }
+            @include max(1080px){
+                object-position: 0px 0px;
+            }
+            @include max(480px){
+                display: none;
+            }
+        }
+        .mobile{
+            width: 100%;
+            object-fit: cover;
+            height: 360px;
+            @include min(481px){
+                display: none;
+            }
+        }
+    }
+
+    .img-active{
+        visibility: visible;
+    }
+
+    .img-2{
+        position: absolute;
+        top: 0;
+        visibility: hidden;
+        height: 534px;
+        width: 100%;
+    }
+    .img-3{
+        position: absolute;
+        top: 0;
+        visibility: hidden;
+        height: 534px;
+        width: 100%;
+    }
+
+    .active{
+        visibility: visible;
+        animation: show 0.6s ease-in;
+    }
+
+
+
+    &__text{
+        z-index: 10;
+        background: #fff;
+        width: 100%;
+        .text{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 120px 100px;
+            @include max(1080px){
+                max-width: 2000px;
+                padding: 73px 55px;
+            }
+            @include max(480px){
+                padding: 73px 34px;
+            }
+            h1{
+                font-size: rem(40);
+                letter-spacing: -1.89px;
+                padding-bottom: rem(25);
+                line-height: 1.12;
+                @include max(720px){
+                    font-size: rem(35);
+                }
+                @include max(480px){
+                    padding-bottom: 13px;
+                    max-width: 20rem;
+                    font-size: rem(29);
+                }
+                @include max(350px){
+                    max-width: 15rem;
+                    font-size: 23px;
+                }
+            }
+            p{
+                font-size: rem(12);
+                line-height: 1.7;
+                color: $DarkGray;
+                letter-spacing: -0.3px;
+                word-spacing: 0px;
+                padding-bottom: rem(30);
+                @include max(480px){
+                    max-width: 24rem;
+                    padding-bottom: 50px;
+                }
+            }
+            small{
+                font-size: rem(12);
+                text-transform: uppercase;
+                letter-spacing: 10px;
+                font-weight: 600;
+                img{
+                    position: relative;
+                    top: 2px;
+                    left: 15px;
+                }
+                &:hover{
+                    cursor: pointer;
+                    color: $DarkGray;
+                    transition: 0.3s ease-in-out;
+                }
+            }
+
+            .text-2{
+                position: absolute;
+                visibility: hidden;
+                padding-right: 100px;
+                @include max(1080px){
+                    padding-right: 40px;
+                }
+            }
+            .text-3{
+                position: absolute;
+                visibility: hidden;
+                padding-right: 100px;
+                @include max(1080px){
+                    padding-right: 30px;
+                }
+            }
+
+            .text-hidden{
+                visibility: hidden;
+            }
+            .show{
+                animation: showing 0.7s ease-in-out;
+                visibility: visible;   
+            }
+        }
+    }
+
+
+    &__btn{
+        z-index: 16;
+        position: absolute;
+        bottom: 0;
+        right: -160px;
+        display: flex;
+        .arrow{
+            padding: rem(25) rem(33);
+            background: black;
+            @include max(720px){
+                padding: rem(15) rem(26);
+            }
+            @include max(480px){
+                padding: rem(13.2) rem(21);
+            }
+            &:hover{
+                transform: scale(1.025);
+                cursor: pointer;
+                opacity: 0.9;
+                @include max(1080px){
+                    transform: none;
+                }
+            }
+            &:active{
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @include max(1080px){
+            right: 0;
+        }
+    }
+}
+
